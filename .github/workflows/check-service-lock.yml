@@ -17,7 +17,7 @@ jobs:
         with:
           clientId: ${{ secrets.PORT_CLIENT_ID }}
           clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
-          identifier: rating
+          identifier: notification-service
           blueprint: service
           operation: GET
   check-lock-status:
@@ -32,4 +32,9 @@ jobs:
           echo "Service in production is locked, stopping deployment"
           exit 1
       - name: Service is not locked, continue deployment
+        run: echo "Service in production is not locked, continuing deployment"
+  run-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run deployment
         run: echo "Service in production is not locked, continuing deployment"
