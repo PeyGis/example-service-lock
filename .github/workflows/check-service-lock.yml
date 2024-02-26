@@ -35,6 +35,7 @@ jobs:
         run: echo "Service in production is not locked, continuing deployment"
   run-deployment:
     runs-on: ubuntu-latest
+    needs: [check-lock-status]
     steps:
       - name: Run deployment
         run: echo "Service in production is not locked, continuing deployment"
